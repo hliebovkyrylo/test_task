@@ -4,6 +4,8 @@ import Link from 'next/link';
 import { VehicleMake } from '@/typings/vehicleMake';
 import { Loader } from '../Loader';
 
+const apiUrl = process.env.NEXT_PUBLIC_APP_API_URL;
+
 export const FilterPanel = () => {
   const [vehicleMakes, setVehicleMakes] = useState<VehicleMake[]>([]);
   const [selectedVehicleMakeId, setSelectedVehicleMakeId] = useState<
@@ -24,7 +26,7 @@ export const FilterPanel = () => {
   const getVehicleMakes = async () => {
     setIsLoading(true);
     const response = await fetch(
-      'https://vpic.nhtsa.dot.gov/api/vehicles/GetMakesForVehicleType/car?format=json'
+      `${apiUrl}/api/vehicles/GetMakesForVehicleType/car?format=json`
     );
 
     const data = await response.json();
