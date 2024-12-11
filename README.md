@@ -12,7 +12,7 @@ bun dev
 
 Project architecture:
 
-.          
+```       
 ├── public/                     # Public files
 ├── src/                        
 │   ├── app/                    
@@ -50,4 +50,4 @@ Project architecture:
 ├── README.md                   
 ├── tailwind.config.js          # Tailwind CSS configuration
 ├── tsconfig.json               #TypeScript configuration
-
+```
