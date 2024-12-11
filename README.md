@@ -1,4 +1,4 @@
-Assembling the project
+## Assembling the project
 
 ```bash
 npm run dev
@@ -10,7 +10,7 @@ pnpm dev
 bun dev
 ```
 
-Project architecture:
+## Project architecture:
 
 ```       
 ├── public/                     # Public files
@@ -51,3 +51,13 @@ Project architecture:
 ├── tailwind.config.js          # Tailwind CSS configuration
 ├── tsconfig.json               #TypeScript configuration
 ```
+
+## Screenshots
+
+<div style="display: flex; justify-content: space-between;">
+    <img src="screenshots/1.png" width="200"/>
+    <img src="screenshots/2.png" width="200"/>
+    <img src="screenshots/3.png" width="200"/>
+    <img src="screenshots/4.png" width="200"/>
+    <img src="screenshots/4.png" width="200"/>
+</div>
