@@ -3,4 +3,4 @@ export type VehicleMake = {
   MakeName: string;
   VehicleTypeId: number;
   VehicleTypeName: string;
-}
+};

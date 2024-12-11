@@ -1,5 +1,6 @@
-import { Make } from "@/typings/make";
-import Link from "next/link";
+import { CarCard } from '@/components/CarCard';
+import { Car } from '@/typings/car';
+import Link from 'next/link';
 
 export default async function Result({
   params,
@@ -16,27 +17,26 @@ export default async function Result({
     return data.Results || [];
   };
 
-  const models: Make[] = await fetchModels(makeId, year);
+  const models: Car[] = await fetchModels(makeId, year);
 
   return (
-    <div>
-      <h1>Vehicles</h1>
-      <div className="flex gap-3">
-      {models.map((model, index) => (
-        <article key={index} className="w-[300px] h-20 flex flex-col justify-between bg-[#333333] p-2 rounded-md">
-          <p>{model.Make_Name}</p>
-          <p>{model.Model_Name}</p>
-        </article>
-      ))}
+    <div className="flex flex-col justify-between h-screen p-10">
+      <div>
+        <h1 className="text-2xl mb-3">Vehicles</h1>
+        <div className="flex gap-3 flex-wrap">
+          {models.map((model, index) => (
+            <CarCard key={index} model={model} />
+          ))}
+        </div>
       </div>
-      <Link href={"/"}>Back home</Link>
+      <Link href={'/'}>Back home</Link>
     </div>
   );
 }
 
 export async function generateStaticParams() {
   const result = await fetch(
-    "https://vpic.nhtsa.dot.gov/api/vehicles/GetMakesForVehicleType/car?format=json"
+    'https://vpic.nhtsa.dot.gov/api/vehicles/GetMakesForVehicleType/car?format=json'
   );
   const data = await result.json();
 
@@ -45,7 +45,7 @@ export async function generateStaticParams() {
     (_, i) => 2015 + i
   );
 
-  const params = data.Results.flatMap((vehicle: Make) =>
+  const params = data.Results.flatMap((vehicle: Car) =>
     years.map((year) => ({
       makeId: vehicle.Make_ID,
       year: year.toString(),
